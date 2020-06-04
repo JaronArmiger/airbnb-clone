@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   devise_for :users
-	root 'application#index'
+	root 'static_pages#index'
 end
