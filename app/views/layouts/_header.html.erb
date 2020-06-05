@@ -1,0 +1,27 @@
+<nav class="navbar">
+		<div class="logo-container">
+			<%= render 'layouts/logo' %>
+		</div>
+		<div class="d-flex justify-content-end" id="user_nav">
+			<% if user_signed_in? %>
+			<% else %>
+			  <ul class="navbar-nav flex-row justify-content-between">
+				  <li class="nav-item">
+				  	<%= link_to "Host your home", "#", class: "nav-link" %>
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Host an experience", "#", class: "nav-link" %>
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Help", "#", class: "nav-link" %>
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Log in", "#", class: "nav-link" %>
+				  </li>
+				  <li class="nav-item">
+				  	<%= link_to "Sign up", "#", class: "nav-link" %>
+				  </li>
+			  </ul>
+			<% end %>
+		</div>
+</nav>
