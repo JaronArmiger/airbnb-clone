@@ -12,6 +12,7 @@ end
 
 addresses.each do |address|
 	Location.create!(country_code: address.country_code,
+					 country: address.country,
 					 state: address.state,
 					 city: address.city,
 					 postal_code: address.postal_code,
