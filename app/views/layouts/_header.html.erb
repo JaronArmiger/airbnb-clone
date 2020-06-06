@@ -1,6 +1,8 @@
 <nav class="navbar">
 		<div class="logo-container">
-			<%= render 'layouts/logo' %>
+			<a href="/">
+				<%= render 'layouts/logo' %>
+			</a>
 		</div>
 		<div class="d-flex justify-content-end" id="user_nav">
 			<% if user_signed_in? %>
@@ -16,10 +18,10 @@
 				  	<%= link_to "Help", "#", class: "nav-link" %>
 				  </li>
 				  <li class="nav-item">
-				  	<%= link_to "Log in", "#", class: "nav-link" %>
+				  	<%= link_to "Log in", new_user_session_path, class: "nav-link" %>
 				  </li>
 				  <li class="nav-item">
-				  	<%= link_to "Sign up", "#", class: "nav-link" %>
+				  	<%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
 				  </li>
 			  </ul>
 			<% end %>
