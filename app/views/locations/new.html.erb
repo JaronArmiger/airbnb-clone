@@ -1,0 +1,9 @@
+<h1>Input Location</h1>
+
+<%= form_with(model: @location, local: true) do |f| %>
+	<%= f.label :country, "Country / Region" %>
+	<%= f.country_select :country_code %>
+	<br>
+	
+	<%= f.submit %>
+<% end %>
