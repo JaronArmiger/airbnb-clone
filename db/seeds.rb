@@ -33,8 +33,7 @@
 
 
 
-# Location
-
+# Locations
 	addresses = []
 
 	until addresses.length == 100
@@ -54,7 +53,7 @@
 						 city: address.city,
 						 postal_code: address.postal_code,
 						 street: address.street,
-						 listing_id: i
+						 listing_id: i+1
 			)
 	end
 
