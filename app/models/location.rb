@@ -19,9 +19,14 @@ class Location < ApplicationRecord
 			url_string << country_code.upcase + "+"
 		end
 		if postal_code
-			url_string << postal_code + "+"
+			url_string << postal_code.to_s + "+"
 		end
+		url_string.gsub!(" ", "+")
 		url_string = url_string.chop
+		if url_string.length == 2
+			url_string = country
+		end
+		url_string
 	end
 
 	def map_url
