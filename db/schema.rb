@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_193605) do
+ActiveRecord::Schema.define(version: 2020_06_07_194208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2020_06_07_193605) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"
     t.string "country"
+    t.bigint "listing_id", null: false
+    t.index ["listing_id"], name: "index_locations_on_listing_id"
   end
 
   create_table "spaces", force: :cascade do |t|
@@ -81,4 +83,5 @@ ActiveRecord::Schema.define(version: 2020_06_07_193605) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "locations", "listings"
 end
