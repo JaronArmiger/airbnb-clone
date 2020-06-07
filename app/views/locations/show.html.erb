@@ -25,4 +25,10 @@
 	<p class="card-text">
 		<%= @location.postal_code %>
 	</p>
+	<%= @location.format_address %>
+	<%= @location.map_url %>
+
+	<iframe width="600" height="450" frameborder="0" style="border:0"
+		src=<%= @location.map_url %> allowfullscreen>
+	</iframe>
 </div>
