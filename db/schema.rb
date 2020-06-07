@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_191500) do
+ActiveRecord::Schema.define(version: 2020_06_07_193605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 2020_06_07_191500) do
     t.integer "guests"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "listings_spaces", id: false, force: :cascade do |t|
+    t.bigint "listing_id"
+    t.bigint "space_id"
+    t.index ["listing_id"], name: "index_listings_spaces_on_listing_id"
+    t.index ["space_id"], name: "index_listings_spaces_on_space_id"
   end
 
   create_table "locations", force: :cascade do |t|
