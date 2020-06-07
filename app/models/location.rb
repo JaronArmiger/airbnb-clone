@@ -1,4 +1,6 @@
 class Location < ApplicationRecord
+	belongs_to :listing
+
 	def format_address
 		url_string = ""
 		if street_number
