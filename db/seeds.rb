@@ -52,7 +52,7 @@
 						 state: address.state,
 						 city: address.city,
 						 postal_code: address.postal_code,
-						 street: address.street,
+						 street_address: address.street,
 						 listing_id: i+1
 			)
 	end

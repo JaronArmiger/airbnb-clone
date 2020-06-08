@@ -1,13 +1,16 @@
 class Location < ApplicationRecord
+	# associations
 	belongs_to :listing
+
+	# validations
+	validates :postal_code, numericality: true
+	# callbacks
+	before_save :upcase_country_code
 
 	def format_address
 		url_string = ""
-		if street_number
-			url_string << street_number + "+"
-		end
-		if street
-			url_string << street + "+"
+		if street_address
+			url_string << street_address + "+"
 		end
 		if city
 			url_string << city + "+"
@@ -35,4 +38,10 @@ class Location < ApplicationRecord
 		address = format_address
 		url = root_url + "q=" + address + "&key=" + key
 	end
+
+	private
+
+		def upcase_country_code
+			country_code.upcase!
+		end
 end
