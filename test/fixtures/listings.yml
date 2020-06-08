@@ -6,6 +6,7 @@ one:
   bathrooms: 1
   beds: 1
   guests: 1
+  type_id: 1
 
 two:
   description: MyText
@@ -13,3 +14,4 @@ two:
   bathrooms: 1
   beds: 1
   guests: 1
+  type_id: 1

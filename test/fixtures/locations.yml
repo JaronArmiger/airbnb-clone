@@ -4,8 +4,11 @@ one:
   country: MyString
   city: MyString
   street: MyString
-  street_number: 1
-  zipcode: 1
+  street_number: 18
+  postal_code: 60030
+  country_code: AF
+  state: Ghor
+  listing_id: 1
 
 two:
   country: MyString

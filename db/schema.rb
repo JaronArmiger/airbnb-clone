@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_162349) do
+ActiveRecord::Schema.define(version: 2020_06_08_185410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_162349) do
     t.string "country"
     t.bigint "listing_id", null: false
     t.string "street_address"
-    t.index ["listing_id"], name: "index_locations_on_listing_id"
+    t.index ["listing_id"], name: "index_locations_on_listing_id", unique: true
   end
 
   create_table "spaces", force: :cascade do |t|
