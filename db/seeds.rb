@@ -21,11 +21,11 @@
 	end	
 
 # Listings
-	amount = rand(5) + 1
-	description = Faker::Hipster.paragraph
-	title = Faker::Hipster.sentence
-	type_id = rand(5) + 1
 	100.times do
+		amount = rand(5) + 1
+		description = Faker::Hipster.paragraph
+		title = Faker::Hipster.sentence
+		type_id = rand(5) + 1
 		Listing.create(description: description, title: title,
 					   bathrooms: amount, beds: amount, 
 					   guests: amount, type_id: type_id)

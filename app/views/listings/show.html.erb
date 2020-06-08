@@ -1,0 +1,39 @@
+<div class="card">
+	<h1 class="card-title">title</h1>
+	<p class="card-text">
+		<%= @listing.title %>
+	</p>
+	<h2 class="card-title">description</h2>
+	<p class="card-text">
+		<%= @listing.description %>
+	</p>
+	<%= link_to "all locations", locations_path %>
+	<h2>Country</h2>
+	<p class="card-text">
+		<%= @location.country %>
+	</p>
+	<h2>State</h2>
+	<p class="card-text">
+		<%= @location.state %>
+	</p>
+	<h2>City</h2>
+	<p class="card-text">
+		<%= @location.city %>
+	</p>
+	<h2>Street</h2>
+	<p class="card-text">
+		<%= @location.street %>
+	</p>
+	<h2>Street Number</h2>
+	<p class="card-text">
+		<%= @location.street_number %>
+	</p>
+	<h2>Postal Code</h2>
+	<p class="card-text">
+		<%= @location.postal_code %>
+	</p>
+	<%= @location.map_url %>
+	<iframe width="600" height="450" frameborder="0" style="border:0"
+		src=<%= @location.map_url %> allowfullscreen>
+	</iframe>
+</div>
