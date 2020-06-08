@@ -9,9 +9,9 @@ class Listing < ApplicationRecord
 
 	# validations
 	validates :type_id, presence: true
-	validates :guests, presence: true, numericality: true
-	validates :beds, presence: true, numericality: true
-	validates :bathrooms, presence: true, numericality: true
+	validates :guests, presence: true, numericality: { only_integer: true }
+	validates :beds, presence: true, numericality: { only_integer: true }
+	validates :bathrooms, presence: true, numericality: { only_integer: true }
 	validates :description, presence: true, length: { maximum: 500 }
 	validates :title, presence: true, length: { maximum: 30 }
 end

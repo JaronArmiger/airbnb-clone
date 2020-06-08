@@ -3,16 +3,17 @@
 one:
   country: MyString
   city: MyString
-  street: MyString
-  street_number: 18
+  street_address: MyString
   postal_code: 60030
   country_code: AF
   state: Ghor
-  listing_id: 1
+  listing: one
 
 two:
   country: MyString
   city: MyString
-  street: MyString
-  street_number: 1
-  zipcode: 1
+  street_address: MyString
+  postal_code: 60030
+  country_code: AF
+  state: Ghor
+  listing: two
