@@ -1,0 +1,18 @@
+<h1>Make a new listing</h1>
+
+<%= form_with(model: @listing, local: true) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<%= f.label :type_id, "What type of place are you listing?" %>
+	<%= f.collection_select :type_id, Type.all, :id, :name %>
+	<br>
+	<%= f.label :guests, "How many guests?" %>
+	<%= f.number_field :guests, value: 0 %>
+	<br>
+	<%= f.label :beds, "How many beds?" %>
+	<%= f.number_field :beds, value: 0 %>
+	<br>
+	<%= f.label :bathrooms, "How many bathrooms?" %>
+	<%= f.number_field :bathrooms, value: 0 %>
+	
+<% end %>

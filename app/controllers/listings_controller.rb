@@ -7,4 +7,8 @@ class ListingsController < ApplicationController
 		@listing = Listing.find(params[:id])
 		@location = @listing.location
 	end
+
+	def new
+		@listing = Listing.new
+	end
 end
