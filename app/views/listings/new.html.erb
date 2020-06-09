@@ -2,53 +2,21 @@
 
 <%= form_with(model: @listing, local: true) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
+	
+	<%= render partial: 'form_partials/type', locals: {f: f} %>
+	<%= render partial: 'form_partials/guests_beds', locals: {f: f} %>
+	<%= render partial: 'form_partials/bathrooms', locals: {f: f} %>
+	<%= render partial: 'form_partials/location', locals: {f: f} %>
+	<%= render partial: 'form_partials/amenities', locals: {f: f} %>
+	<%= render partial: 'form_partials/spaces', locals: {f: f} %>
+	<%= render partial: 'form_partials/description', locals: {f: f} %>
+	<%= render partial: 'form_partials/title', locals: {f: f} %>
 
-	<%= f.label :type_id, "What type of place are you listing?" %>
-	<%= f.collection_select :type_id, Type.all, :id, :name %>
-	<br>
-	<%= f.label :guests, "How many guests?" %>
-	<%= f.number_field :guests, value: 1, min: 1, max: 20 %>
-	<br>
-	<%= f.label :beds, "How many beds?" %>
-	<%= f.number_field :beds, value: 1, min: 1, max: 20 %>
-	<br>
-	<%= f.label :bathrooms, "How many bathrooms?" %>
-	<%= f.number_field :bathrooms, value: 1, min: 1, max: 20 %>
-	<!-- location nested form -->
-	<h2>Where is your place located?</h2>
-	<br>
-	<%= f.fields_for :location do |loc_form| %>
-		<%= loc_form.label :country_code %>
-		<%= loc_form.country_select :country_code %>
-		<br>
-		<%= loc_form.label :street_address %>
-		<%= loc_form.text_field :street_address %>
-		<br>
-		<%= loc_form.label :city %>
-		<%= loc_form.text_field :city %>
-		<br>
-		<%= loc_form.label :state %>
-		<%= loc_form.text_field :state %>
-		<br>
-		<%= loc_form.label :postal_code %>
-		<%= loc_form.text_field :postal_code %>
-	<% end %>
-	<!-- end location form -->
-	<br>
-	<%= f.label :amenity_ids, "Amenities" %>
-	<ul>
-	<%= f.collection_check_boxes :amenity_ids, Amenity.all, :id, :name %>
-	</ul>
-	<%= f.label :space_ids, "Spaces" %>
-	<ul>
-	<%= f.collection_check_boxes :space_ids, Space.all, :id, :name %>
-	</ul>
-	<br>
-	<%= f.label :description, "Describe your place" %>
-	<%= f.text_area :description %>
-	<br>
-	<%= f.label :title, "Create a title for your listing" %>
-	<%= f.text_field :title %>
-	<br>
+
+
+
+	<h2>Confirmation</h2>
+	<p>
+	</p>
 	<%= f.submit "Create Listing" %>
 <% end %>

@@ -1,0 +1,20 @@
+<!-- location nested form -->
+<h2>Where is your place located?</h2>
+<br>
+<%= f.fields_for :location do |loc_form| %>
+	<%= loc_form.label :country_code %>
+	<%= loc_form.country_select :country_code %>
+	<br>
+	<%= loc_form.label :street_address %>
+	<%= loc_form.text_field :street_address %>
+	<br>
+	<%= loc_form.label :city %>
+	<%= loc_form.text_field :city %>
+	<br>
+	<%= loc_form.label :state %>
+	<%= loc_form.text_field :state %>
+	<br>
+	<%= loc_form.label :postal_code %>
+	<%= loc_form.text_field :postal_code %>
+<% end %>
+<!-- end location form -->
