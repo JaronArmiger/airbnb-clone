@@ -2,15 +2,9 @@
 
 <%= form_with(model: @listing, local: true) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-	
-	<%= render partial: 'form_partials/type', locals: {f: f} %>
-	<%= render partial: 'form_partials/guests_beds', locals: {f: f} %>
-	<%= render partial: 'form_partials/bathrooms', locals: {f: f} %>
-	<%= render partial: 'form_partials/location', locals: {f: f} %>
-	<%= render partial: 'form_partials/amenities', locals: {f: f} %>
-	<%= render partial: 'form_partials/spaces', locals: {f: f} %>
-	<%= render partial: 'form_partials/description', locals: {f: f} %>
-	<%= render partial: 'form_partials/title', locals: {f: f} %>
+
+
+	<%= render partial: "form_partials/#{@listing.current_step}", locals: {f: f} %>
 
 
 

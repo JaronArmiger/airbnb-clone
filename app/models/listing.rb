@@ -14,4 +14,16 @@ class Listing < ApplicationRecord
 	validates :bathrooms, presence: true, numericality: { only_integer: true }
 	validates :description, presence: true, length: { maximum: 500 }
 	validates :title, presence: true, length: { maximum: 30 }
+
+	attr_writer :current_step
+
+	# reader method
+	def current_step
+		# what's specified by writer, or default to first step in list
+		@current_step || steps.first
+	end
+
+	def steps
+		%w[type guest_beds bathrooms location amenities spaces description title]
+	end
 end
