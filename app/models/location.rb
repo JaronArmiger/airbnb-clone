@@ -42,6 +42,6 @@ class Location < ApplicationRecord
 	private
 
 		def upcase_country_code
-			country_code.upcase!
+			country_code.upcase! if country_code
 		end
 end
