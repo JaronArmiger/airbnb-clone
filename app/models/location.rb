@@ -3,7 +3,7 @@ class Location < ApplicationRecord
 	belongs_to :listing
 
 	# validations
-	validates :postal_code, numericality: true
+	#validates :postal_code, numericality: true
 	# callbacks
 	before_save :upcase_country_code
 
