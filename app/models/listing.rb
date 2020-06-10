@@ -8,12 +8,12 @@ class Listing < ApplicationRecord
 	belongs_to :type
 
 	# validations
-	validates :type_id, presence: true
-	validates :guests, presence: true, numericality: { only_integer: true }
-	validates :beds, presence: true, numericality: { only_integer: true }
-	validates :bathrooms, presence: true, numericality: { only_integer: true }
-	validates :description, presence: true, length: { maximum: 500 }
-	validates :title, presence: true, length: { maximum: 30 }
+	validates :type_id, presence: true, if: lambda { |l| l.current_step == "type"}
+	validates :guests, presence: true, numericality: { only_integer: true }, if: lambda { |l| l.current_step == "guests_beds"}
+	validates :beds, presence: true, numericality: { only_integer: true }, if: lambda { |l| l.current_step == "guests_beds"}
+	validates :bathrooms, presence: true, numericality: { only_integer: true }, if: lambda { |l| l.current_step == "bathrooms"}
+	validates :description, presence: true, length: { maximum: 500 }, if: lambda { |l| l.current_step == "description"}
+	validates :title, presence: true, length: { maximum: 30 }, if: lambda { |l| l.current_step == "title" }
 
 	attr_writer :current_step
 
@@ -24,6 +24,29 @@ class Listing < ApplicationRecord
 	end
 
 	def steps
-		%w[type guest_beds bathrooms location amenities spaces description title]
+		%w[type guests_beds bathrooms location amenities spaces description title confirmation]
+	end
+
+	def next_step
+		self.current_step = steps[steps.index(current_step) + 1]
+	end
+
+	def previous_step
+		self.current_step = steps[steps.index(current_step) - 1]
+	end
+
+	def first_step?
+		current_step == steps.first
+	end
+
+	def last_step?
+		current_step == steps.last
+	end
+
+	def all_valid?
+		steps.all? do |step|
+			self.current_step = step
+			valid?
+		end
 	end
 end

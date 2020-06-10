@@ -3,14 +3,8 @@
 <%= form_with(model: @listing, local: true) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 
-
-	<%= render partial: "form_partials/#{@listing.current_step}", locals: {f: f} %>
-
-
-
-
-	<h2>Confirmation</h2>
-	<p>
-	</p>
-	<%= f.submit "Create Listing" %>
+	<%= render partial: "form_partials/#{@listing.current_step}", locals: { f: f, location: @listing.build_location} %>
+	<br>
+	<%= f.submit "Back", name: "back_button" unless @listing.first_step? %>
+	<%= f.submit "Continue" %>
 <% end %>
