@@ -2,7 +2,7 @@
 
 <p>
 	<strong>Type</strong>
-	<%= @listing.type_id %>
+	<%= Type.find(@listing.type_id).name %>
 </p>
 
 <p>
@@ -21,11 +21,34 @@
 </p>
 
 <p>
-	<strong>Location</strong>
-	<%= @listing.location %>
+	<h2>Location</h2>
+	<strong>Street Address</strong>
+	<%= @location.street_address %>
+	<strong>City</strong>
+	<%= @location.city %>
+	<strong>State</strong>
+	<%= @location.state %>
+	<strong>Country</strong>
+	<%= @location.country_code %>
+	<strong>Postal Code</strong>
+	<%= @location.postal_code %>
 </p>
 
 <p>
-	<strong>Type</strong>
-	<%= @listing.type_id %>
+	<strong>Spaces</strong>
+	<ul>
+		<% @spaces.each do |space| %>
+			<li><%= space.name %></li>
+		<% end %>
+	</ul>
 </p>
+
+<p>
+	<strong>Amenities</strong>
+	<ul>
+		<% @amenities.each do |amenity| %>
+			<li><%= amenity.name %></li>
+		<% end %>
+	</ul>
+</p>
+
