@@ -16,6 +16,18 @@
 				  	<%= link_to "Help", "#", class: "nav-link" %>
 				  </li>
 				  <% if user_signed_in? %>
+				  	<li class="nav-item dropdown">
+				  		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+				  		<ul class="dropdown-menu">
+				  			<li><%= link_to "Messages", "#" %></li>
+				  			<li><%= link_to "Notifications", "#" %></li>
+				  			<li><%= link_to "Trips", "#" %></li>
+				  			<li><%= link_to "Saved", "#" %></li>
+				  			<li><%= link_to "Manage Listings", "#" %></li>
+				  			<li><%= link_to "Account", user_path(current_user) %></li>
+				  			<li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+				  		</ul>
+				  	</li>
 				  <% else %>
 					  <li class="nav-item">
 					  	<%= link_to "Log in", new_user_session_path, class: "nav-link" %>
