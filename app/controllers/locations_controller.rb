@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-	
+	before_action :require_sign_up
 	def index
 		@locations = Location.all
 	end
