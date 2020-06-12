@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
 	before_action :require_sign_up
+	before_action :require_profile_picture
 	
 	def index
 		@listings = Listing.all
@@ -104,5 +105,12 @@ class ListingsController < ApplicationController
 											 :city, :state, :postal_code ], 
 											 :amenity_ids => [],
 											 :space_ids => [] )
+		end
+
+		def require_profile_picture
+			unless current_user.profile_picture.attached?
+				store_location
+				redirect_to profile_picture_path
+			end
 		end
 end

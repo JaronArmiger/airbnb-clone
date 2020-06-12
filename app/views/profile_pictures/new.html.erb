@@ -1,0 +1,4 @@
+<%= form_with(url: "/profile_pictures", method: "post") do |f| %>
+	<%= f.file_field :profile_picture %>
+	<%= f.submit %>
+<% end %>
