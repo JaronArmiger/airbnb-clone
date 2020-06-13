@@ -27,12 +27,12 @@ class ListingsController < ApplicationController
 	end
 
 	def create	
+		
 		session[:listing_params].deep_merge!(listing_params) if params[:listing]
 
 		@listing = Listing.new(session[:listing_params])
 
 		@listing.current_step = session[:listing_step]
-		
 
 		if @listing.valid?
 			if params[:back_button]
@@ -48,8 +48,7 @@ class ListingsController < ApplicationController
 				if ( amenity_ids = session[:listing_params]["amenity_ids"] )
 					@amenities = Amenity.find(amenity_ids[1..-1])
 				end
-
-			elsif @listing.last_step?
+			elsif @listing.current_step == "confirmation"
 				@listing.save if @listing.all_valid?
 			else
 				@listing.next_step
@@ -65,7 +64,8 @@ class ListingsController < ApplicationController
 		else
 			session[:listing_step] = session[:listing_params] = nil
 			flash[:notice] = "Listing Saved"
-			redirect_to listing_path(@listing)
+			redirect_to controller: 'images', action: 'new', id: @listing.id
+			#redirect_to listing_path(@listing)
 		end
 	end
 

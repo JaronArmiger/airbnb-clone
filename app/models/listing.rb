@@ -25,7 +25,7 @@ class Listing < ApplicationRecord
 	end
 
 	def steps
-		%w[type guests_beds bathrooms location amenities spaces description title confirmation]
+		%w[type guests_beds bathrooms location amenities spaces description title confirmation images]
 	end
 
 	def next_step

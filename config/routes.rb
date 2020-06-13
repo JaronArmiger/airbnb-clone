@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 	resources :locations, only: [:index, :show, :new, :create]
 	resources :listings
 	resources :profile_pictures, only: [:new, :create]
-
+	resources :images, only: [:new, :create]
 end
