@@ -18,10 +18,11 @@ class User < ApplicationRecord
   end
 
   def display_profile_picture
+    return @pic if @pic
     if profile_picture.attached?
-      profile_picture
+      @pic = profile_picture
     else
-      "default.jpg"
+      @pic = "default.jpg"
     end
   end
 end

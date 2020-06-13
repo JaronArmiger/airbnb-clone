@@ -1,5 +1,6 @@
 class Listing < ApplicationRecord
-	
+	has_many_attached :images
+
 	# associations
 	has_one :location, dependent: :destroy
 	accepts_nested_attributes_for :location

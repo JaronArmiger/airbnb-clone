@@ -26,11 +26,13 @@ class ListingsController < ApplicationController
 		end
 	end
 
-	def create
+	def create	
 		session[:listing_params].deep_merge!(listing_params) if params[:listing]
+
 		@listing = Listing.new(session[:listing_params])
-		
+
 		@listing.current_step = session[:listing_step]
+		
 
 		if @listing.valid?
 			if params[:back_button]
@@ -46,6 +48,7 @@ class ListingsController < ApplicationController
 				if ( amenity_ids = session[:listing_params]["amenity_ids"] )
 					@amenities = Amenity.find(amenity_ids[1..-1])
 				end
+
 			elsif @listing.last_step?
 				@listing.save if @listing.all_valid?
 			else
@@ -55,37 +58,8 @@ class ListingsController < ApplicationController
 			session[:listing_step] = @listing.current_step
 		end
 
-		puts "session[:listing_params]"
-		p session[:listing_params]
-
-		puts "space_ids"
-		p space_ids
-
-		puts "session[:listing_params]['space_ids']"
-		p session[:listing_params]["space_ids"]
-		puts "@spaces"
-		p @spaces
-
-		puts "@amenities"
-		p @amenities
-=begin
-		puts "@listing"
-		p @listing
-
-		puts "@location"
-		p @location
-
-		puts ""
 		
-		#puts "session[:listing_params][:location_attributes]"
-		#p session[:listing_params]["location_attributes"]
-		puts "@listing.current_step"
-		p @listing.current_step
-		puts "session[:listing_step]"
-		p session[:listing_step]
-		puts "yes we have location_attributes"
-		puts ""
-=end
+
 		if @listing.new_record? # returns true if object has not been saved yet
 			render :new
 		else
@@ -102,7 +76,7 @@ class ListingsController < ApplicationController
 											:bathrooms, :description,
 											:title, location_attributes:
 											[ :country_code, :street_address,
-											 :city, :state, :postal_code ], 
+											 :city, :state, :postal_code ],
 											 :amenity_ids => [],
 											 :space_ids => [] )
 		end
@@ -110,7 +84,8 @@ class ListingsController < ApplicationController
 		def require_profile_picture
 			unless current_user.profile_picture.attached?
 				store_location
-				redirect_to profile_picture_path
+				flash[:notice] = "Finish setting up your account"
+				redirect_to new_profile_picture_path
 			end
 		end
 end

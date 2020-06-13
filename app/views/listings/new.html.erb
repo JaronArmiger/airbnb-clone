@@ -8,5 +8,5 @@
 	<%= f.submit "Back", name: "back_button" unless @listing.first_step? %>
 	<%= f.submit "Continue" unless @listing.current_step == "title" || @listing.last_step? %>
 	<%= f.submit "Review Your Information", name: "review" if @listing.current_step == "title" %>
-	<%= f.submit "Create Listing", name: "create" if @listing.last_step? %>
+	<%= f.submit "Create Listing" if @listing.last_step? %>
 <% end %>
