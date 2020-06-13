@@ -78,7 +78,8 @@ class ListingsController < ApplicationController
 											[ :country_code, :street_address,
 											 :city, :state, :postal_code ],
 											 :amenity_ids => [],
-											 :space_ids => [] )
+											 :space_ids => [],
+											 :images => [] )
 		end
 
 		def require_profile_picture
