@@ -3,10 +3,10 @@ class ListingsController < ApplicationController
 	before_action :require_profile_picture, except: [:index]
 	
 	def index
-		@listings = Listing.all
-
 		if params[:search]
-			@listings = Listing.find_listings(search_params)
+			@search_params = params[:search][:location]
+			ids = Location.matching_ids(params[:search][:location])
+			@listings = Listing.find(ids)
 		end
 	end
 

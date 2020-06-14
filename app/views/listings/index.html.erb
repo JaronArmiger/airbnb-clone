@@ -15,3 +15,10 @@
 	<br>
 	<%= f.submit "Recherche" %>
 <% end %>
+
+<% if params[:search] %>
+	<p><%= @search_params %></p>
+	<p><%= @ids %></p>
+	<%= render @listings %>
+<% end %>
+

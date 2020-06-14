@@ -8,6 +8,11 @@ class Location < ApplicationRecord
 	after_create :input_country, :create_loc_string
 	after_update :input_country, :create_loc_string
 
+	def self.matching_ids(string)
+		locs = Location.where("loc_string LIKE ?", "%#{string}%")
+		ids = locs.pluck(:listing_id)
+	end
+
 	def format_address
 		url_string = ""
 		if street_address
