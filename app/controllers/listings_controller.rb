@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
 	before_action :require_sign_up
-	before_action :require_profile_picture
+	before_action :require_profile_picture, except: [:index]
 	
 	def index
 		@listings = Listing.all
