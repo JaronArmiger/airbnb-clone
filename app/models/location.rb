@@ -5,7 +5,7 @@ class Location < ApplicationRecord
 	# validations
 	#validates :postal_code, numericality: true
 	# callbacks
-	before_save :upcase_country_code
+	after_save :input_country, :create_loc_string
 
 	def format_address
 		url_string = ""
@@ -18,11 +18,8 @@ class Location < ApplicationRecord
 		if state
 			url_string << state + "+"
 		end
-		if country_code
-			url_string << country_code.upcase + "+"
-		end
-		if postal_code
-			url_string << postal_code.to_s + "+"
+		if country
+			url_string << country + "+"
 		end
 		url_string.gsub!(" ", "+")
 		url_string = url_string.chop
@@ -41,7 +38,14 @@ class Location < ApplicationRecord
 
 	private
 
-		def upcase_country_code
-			country_code.upcase! if country_code
+		def create_loc_string
+			self.loc_string = self.format_address.downcase
+		end
+
+		def input_country
+			if country.nil?
+				code = IsoCountryCodes.find(country_code.downcase)
+				self.country = code.name
+			end
 		end
 end

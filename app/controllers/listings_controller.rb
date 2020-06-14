@@ -4,6 +4,10 @@ class ListingsController < ApplicationController
 	
 	def index
 		@listings = Listing.all
+
+		if params[:search]
+			@listings = Listing.find_listings(search_params)
+		end
 	end
 
 	def show
@@ -80,6 +84,10 @@ class ListingsController < ApplicationController
 											 :amenity_ids => [],
 											 :space_ids => [],
 											 :images => [] )
+		end
+
+		def search_params
+			#params.require(:search).permit(:)
 		end
 
 		def require_profile_picture
