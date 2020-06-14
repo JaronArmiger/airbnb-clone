@@ -60,7 +60,10 @@ group :test do
   gem 'minitest-reporters',       '1.3.8'
 end
 
-gem 'rails_12factor', '~> 0.0.3', group: :production
+group :production do
+  gem 'aws-sdk-s3', '1.46.0', require: false
+  gem 'rails_12factor', '~> 0.0.3', group: :production
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
