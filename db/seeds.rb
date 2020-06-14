@@ -47,7 +47,7 @@
 	end
 
 	addresses.each_with_index do |address, i|
-		Location.create!(country_code: address.country_code,
+		Location.create(country_code: address.country_code,
 						 country: address.country,
 						 state: address.state,
 						 city: address.city,

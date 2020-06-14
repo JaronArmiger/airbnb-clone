@@ -5,7 +5,8 @@ class Location < ApplicationRecord
 	# validations
 	#validates :postal_code, numericality: true
 	# callbacks
-	after_save :input_country, :create_loc_string
+	after_create :input_country, :create_loc_string
+	after_update :input_country, :create_loc_string
 
 	def format_address
 		url_string = ""
@@ -39,13 +40,15 @@ class Location < ApplicationRecord
 	private
 
 		def create_loc_string
-			self.loc_string = self.format_address.downcase
+			location_string = self.format_address.downcase
+			update_column(:loc_string, location_string)
 		end
 
 		def input_country
-			if country.nil?
+			if country.nil? && country_code
 				code = IsoCountryCodes.find(country_code.downcase)
 				self.country = code.name
+				self.save!
 			end
 		end
 end
