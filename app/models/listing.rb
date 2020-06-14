@@ -50,4 +50,8 @@ class Listing < ApplicationRecord
 			valid?
 		end
 	end
+
+	def listing_images
+		@listing_images ||= images
+	end
 end
