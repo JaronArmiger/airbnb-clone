@@ -5,3 +5,11 @@
 .nav-link {
 	color: black;
 }
+
+.dropdown {
+	position: relative;
+}
+
+.navbar-nav .dropdown-menu {
+	position: absolute!important;
+}

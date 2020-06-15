@@ -9,3 +9,11 @@ body, .dropdown-menu {
 .navbar::after {
 	content: none;
 }
+
+select {
+	border: none;
+}
+
+input {
+	border: none;
+}

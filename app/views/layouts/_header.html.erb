@@ -16,20 +16,26 @@
 				  	<%= link_to "Help", "#", class: "nav-link" %>
 				  </li>
 				  <% if user_signed_in? %>
-				  	<li class="nav-item dropdown">
-				  		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				  	<li class="nav-item">
+				  	  <div class="dropdown">
+				  	  	<button class="btn dropdown-toggle"
+				  		 type="button" id="dropdownMenuButton"
+				  		 data-toggle="dropdown"
+				  		 aria-haspopup="true"
+				  		 aria-expanded="false">
 				  			<%= current_user.name %>
 				  			<%= image_tag current_user.display_profile_picture, width: 40 %>
-				  		</a>
-				  		<ul class="dropdown-menu">
-				  			<li><%= link_to "Messages", "#" %></li>
-				  			<li><%= link_to "Notifications", "#" %></li>
-				  			<li><%= link_to "Trips", "#" %></li>
-				  			<li><%= link_to "Saved", "#" %></li>
-				  			<li><%= link_to "Manage Listings", "#" %></li>
-				  			<li><%= link_to "Account", user_path(current_user) %></li>
-				  			<li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-				  		</ul>
+				  		</button>
+						<div class="dropdown-menu" aria-albelledby="dropdownMenuButton">
+							<%= link_to "Messages", "#", class: "dropdown-item" %>
+				  			<%= link_to "Notifications", "#", class: "dropdown-item" %>
+				  			<%= link_to "Trips", "#", class: "dropdown-item" %>
+				  			<%= link_to "Saved", "#", class: "dropdown-item" %>
+				  			<%= link_to "Manage Listings", "#", class: "dropdown-item" %>
+				  			<%= link_to "Account", user_path(current_user), class: "dropdown-item" %>
+				  			<%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+						</div>
+				  	  </div>
 				  	</li>
 				  <% else %>
 					  <li class="nav-item">
