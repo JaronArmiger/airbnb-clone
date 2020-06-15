@@ -1,6 +1,7 @@
+<h1>Add Photos of Your Place!</h1>
+
 <%= form_with(url: "/images", method: "post") do |f| %>
 	<%= f.hidden_field :id, value: @id%>
-	<p><%= @id %></p>
 	<%= f.file_field :images, multiple: true %>
 	<%= f.submit %>
 <% end %>

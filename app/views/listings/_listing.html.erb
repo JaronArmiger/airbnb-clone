@@ -1,6 +1,17 @@
 <div class="card">
-	<%= link_to "view", listing_path(listing) %>
-	<p class="card-text">
-		<%= listing.title %>
-	</p>
+	<a href=<%= listing_path(listing) %> >
+		<% if listing.images.attached? %>
+			<%= image_tag listing.images.first, height: 200 %>
+		<% end %>
+		<span><%= listing.type.name %></span>
+		<h1><%= listing.title %></h1>
+		<% listing.amenities.each do |amenity| %>
+			<span><%= amenity.name %></span>
+		<% end %>
+		<span><%= listing.guests %> guests</span>
+		<span><%= listing.beds %> beds</span>
+		<span><%= listing.bathrooms %> bathrooms</span>
+		
+		<%= listing.id %>
+	</a>
 </div>

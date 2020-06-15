@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
 	before_action :require_sign_up
-	before_action :require_profile_picture, except: [:index]
+	before_action :require_profile_picture, except: [:index, :show]
 	
 	def index
 		if params[:search]
@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
 
 	def new
 		session[:listing_params] ||= {}
-		@listing = Listing.new(session[:listing_params])
+		@listing = current_user.listings.build(session[:listing_params])
 		@listing.current_step = session[:listing_step]
 		if session[:listing_params]["location_attributes"]
 			@location = @listing.build_location(session[:listing_params]["location_attributes"])
@@ -34,7 +34,7 @@ class ListingsController < ApplicationController
 		
 		session[:listing_params].deep_merge!(listing_params) if params[:listing]
 
-		@listing = Listing.new(session[:listing_params])
+		@listing = current_user.listings.build(session[:listing_params])
 
 		@listing.current_step = session[:listing_step]
 

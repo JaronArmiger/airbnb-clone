@@ -1,40 +1,43 @@
-<div class="card">
-	<h1 class="card-title">title</h1>
-	<p class="card-text">
-		<%= @listing.title %>
-	</p>
-	<h2 class="card-title">description</h2>
-	<p class="card-text">
-		<%= @listing.description %>
-	</p>
-	<h2>Country</h2>
-	<p class="card-text">
-		<%= @location.country %>
-	</p>
-	<h2>State</h2>
-	<p class="card-text">
-		<%= @location.state %>
-	</p>
-	<h2>City</h2>
-	<p class="card-text">
-		<%= @location.city %>
-	</p>
-	<h2>Street Address</h2>
-	<p class="card-text">
-		<%= @location.street_address %>
-	</p>
-	<h2>Postal Code</h2>
-	<p class="card-text">
-		<%= @location.postal_code %>
-	</p>
-	<%= @location.map_url %>
-	<iframe width="600" height="450" frameborder="0" style="border:0"
-		src=<%= @location.map_url %> allowfullscreen>
-	</iframe>
-
+<div>
+	<h1><%= @listing.title %></h1>
+	<span><%= @location.city %>, <%= @location.country %></span>
+</div>
+<div>
 	<% if @listing.images.attached? %>
 		<% @listing.listing_images.each do |image| %>
 			<%= image_tag image, width: 200 %>
 		<% end %>
 	<% end %>
+</div>
+
+<div>
+	<h2><%= @listing.type.name %> hosted by <%= @listing.host.name %></h2>
+	<div>
+		<span><%= @listing.guests %> guests</span>
+		<span><%= @listing.beds %> beds</span>
+		<span><%= @listing.bathrooms %> baths</span>
+	</div>
+	<p><%= @listing.description %></p>
+	<div>
+		<h2>Amenities</h2>
+		<ul>
+			<% @listing.amenities.each do |amenity| %>
+				<li><%= amenity.name %></li>
+			<% end %>
+		</ul>
+	</div>
+	<div>
+		<h2>Spaces</h2>
+		<ul>
+			<% @listing.spaces.each do |space| %>
+				<li><%= space.name %></li>
+			<% end %>
+		</ul>
+	</div>
+	<div>
+		<h2>Location</h2>
+		<iframe width="600" height="450" frameborder="0" style="border:0"
+			src=<%= @location.map_url %> allowfullscreen>
+		</iframe>
+	</div>
 </div>

@@ -2,6 +2,7 @@ class Listing < ApplicationRecord
 	has_many_attached :images
 
 	# associations
+	belongs_to :host, class_name: "User"
 	has_one :location, dependent: :destroy
 	accepts_nested_attributes_for :location
 	has_and_belongs_to_many :spaces
