@@ -1,0 +1,58 @@
+.listings_form_wrapper {
+	display: grid;
+}
+
+
+.listings_form_wrapper input {
+	border: 1px solid #DDD;
+}
+
+.listings_form ul {
+	list-style: none;
+}
+
+.listings_form_wrapper select {
+	border: 1px solid #BBB;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.listings_form {
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.listings_form > * {
+	margin: 10px 0;
+}
+
+.listings_form input[type="submit"] {
+	height: 40px;
+	width: 100px;
+	border-radius: 6px;
+	background-color: #d073f5;
+	color: #EEE;
+}
+
+.flowers {
+	display: none;
+	max-width: 100%;
+	height: auto;
+}
+
+
+
+@media (min-width: 750px) {
+	.listings_form_wrapper {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.listings_form {
+		max-width: 75%;
+	}
+
+	.flowers {
+		display: block;
+	}
+}

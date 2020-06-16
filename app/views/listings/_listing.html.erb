@@ -1,17 +1,19 @@
-<div class="card">
-	<a href=<%= listing_path(listing) %> >
+<div class="listing_wrapper">
+  <a href=<%= listing_path(listing) %> >
+  	<div class="card d-flex flex-row">
 		<% if listing.images.attached? %>
 			<%= image_tag listing.images.first, height: 200 %>
 		<% end %>
-		<span><%= listing.type.name %></span>
-		<h1><%= listing.title %></h1>
-		<% listing.amenities.each do |amenity| %>
-			<span><%= amenity.name %></span>
-		<% end %>
-		<span><%= listing.guests %> guests</span>
-		<span><%= listing.beds %> beds</span>
-		<span><%= listing.bathrooms %> bathrooms</span>
-		
-		<%= listing.id %>
-	</a>
+		<div class="card-body">
+			<span><%= listing.type.name %></span>
+			<h1><%= listing.title %></h1>
+			<% listing.amenities.each do |amenity| %>
+				<span><%= amenity.name %></span>
+			<% end %>
+			<span><%= listing.guests %> guests</span>
+			<span><%= listing.beds %> beds</span>
+			<span><%= listing.bathrooms %> bathrooms</span>
+		</div>
+	</div>
+  </a>
 </div>

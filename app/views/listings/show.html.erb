@@ -1,43 +1,45 @@
-<div>
-	<h1><%= @listing.title %></h1>
-	<span><%= @location.city %>, <%= @location.country %></span>
-</div>
-<div>
-	<% if @listing.images.attached? %>
-		<% @listing.listing_images.each do |image| %>
-			<%= image_tag image, width: 200 %>
+<div class="listings_show_wrapper">
+	<div>
+		<h1><%= @listing.title %></h1>
+		<span><%= @location.city %>, <%= @location.country %></span>
+	</div>
+	<div class="images">
+		<% if @listing.images.attached? %>
+			<% @listing.listing_images.each do |image| %>
+				<%= image_tag image %>
+			<% end %>
 		<% end %>
-	<% end %>
-</div>
+	</div>
 
-<div>
-	<h2><%= @listing.type.name %> hosted by <%= @listing.host.name %></h2>
 	<div>
-		<span><%= @listing.guests %> guests</span>
-		<span><%= @listing.beds %> beds</span>
-		<span><%= @listing.bathrooms %> baths</span>
-	</div>
-	<p><%= @listing.description %></p>
-	<div>
-		<h2>Amenities</h2>
-		<ul>
-			<% @listing.amenities.each do |amenity| %>
-				<li><%= amenity.name %></li>
-			<% end %>
-		</ul>
-	</div>
-	<div>
-		<h2>Spaces</h2>
-		<ul>
-			<% @listing.spaces.each do |space| %>
-				<li><%= space.name %></li>
-			<% end %>
-		</ul>
-	</div>
-	<div>
-		<h2>Location</h2>
-		<iframe width="600" height="450" frameborder="0" style="border:0"
-			src=<%= @location.map_url %> allowfullscreen>
-		</iframe>
+		<h2><%= @listing.type.name %> hosted by <%= @listing.host.name %></h2>
+		<div>
+			<span><%= @listing.guests %> guests</span>
+			<span><%= @listing.beds %> beds</span>
+			<span><%= @listing.bathrooms %> baths</span>
+		</div>
+		<p><%= @listing.description %></p>
+		<div>
+			<h2>Amenities</h2>
+			<ul>
+				<% @listing.amenities.each do |amenity| %>
+					<li><%= amenity.name %></li>
+				<% end %>
+			</ul>
+		</div>
+		<div>
+			<h2>Spaces</h2>
+			<ul>
+				<% @listing.spaces.each do |space| %>
+					<li><%= space.name %></li>
+				<% end %>
+			</ul>
+		</div>
+		<div>
+			<h2>Location</h2>
+			<iframe width="600" height="450" frameborder="0" style="border:0"
+				src=<%= @location.map_url %> allowfullscreen>
+			</iframe>
+		</div>
 	</div>
 </div>

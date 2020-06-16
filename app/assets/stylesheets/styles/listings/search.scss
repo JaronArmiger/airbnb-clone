@@ -39,14 +39,13 @@
 	border-bottom-left-radius: 20px;
 }
 
-.search_form
 
-input[type="text"] {
+.search_form input[type="text"] {
 	flex-basis: 400px;
 	border: none;
 }
 
-input[type="number"] {
+.search_form input[type="number"] {
 	width: 100%;
 }
 
@@ -57,7 +56,7 @@ input[type="number"] {
 	border-radius: 20px;
 }
 
-input[type="submit"] {
+#search_submit {
 	background-image: linear-gradient(to right, #f542d7, #f08635);
 	border-radius: 5px;
 	height: 50px;

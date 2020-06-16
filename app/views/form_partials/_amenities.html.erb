@@ -1,3 +1,2 @@
 <h2>Amenities</h2>
-<%= f.label :amenity_ids, "Amenities" %>
 <%= f.collection_check_boxes :amenity_ids, Amenity.all, :id, :name %>

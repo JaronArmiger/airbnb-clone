@@ -1,13 +1,19 @@
 <h1>Make a new listing</h1>
+<div class="listings_form_wrapper">
+	<%= form_with(model: @listing, local: true, class: "listings_form") do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
 
-<%= form_with(model: @listing, local: true) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
+		<%= render partial: "form_partials/#{@listing.current_step}", locals: { f: f, location: @listing.build_location} %>
+		<div class="buttons">
+			<%= f.submit "Back", name: "back_button" unless @listing.first_step? %>
+			<%= f.submit "Continue" unless @listing.current_step == "title" || @listing.last_step? || @listing.current_step == "images" %>
+			<%= f.submit "Review Your Information", name: "review" if @listing.current_step == "title" %>
+			<%= f.submit "Upload Photos", name: "images" if @listing.current_step == "images" %>
+			<%= f.submit "Create Listing" if @listing.last_step? %>
+		</div>
+	<% end %>
 
-	<%= render partial: "form_partials/#{@listing.current_step}", locals: { f: f, location: @listing.build_location} %>
-	<br>
-	<%= f.submit "Back", name: "back_button" unless @listing.first_step? %>
-	<%= f.submit "Continue" unless @listing.current_step == "title" || @listing.last_step? || @listing.current_step == "images" %>
-	<%= f.submit "Review Your Information", name: "review" if @listing.current_step == "title" %>
-	<%= f.submit "Upload Photos", name: "images" if @listing.current_step == "images" %>
-	<%= f.submit "Create Listing" if @listing.last_step? %>
-<% end %>
+
+<img src="https://a0.muscache.com/airbnb/static/packages/start.b12a70f6.png" alt="flowers" class="flowers" >
+
+</div>

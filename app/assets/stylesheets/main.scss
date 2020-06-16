@@ -3,6 +3,5 @@
 @import "base/mixins";
 @import "base/normalize";
 @import "base/globals";
-@import "styles/static_pages";
-@import "styles/listings";
-@import "shared/header";
+@import "styles/**/*";
+@import "shared/**/*";

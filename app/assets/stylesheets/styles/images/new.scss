@@ -1,0 +1,15 @@
+.image_form > * {
+	margin: 10px 0;
+}
+
+.image_form input[type="submit"] {
+	height: 40px;
+	width: 100px;
+	border-radius: 6px;
+	background-color: #d073f5;
+	color: #EEE;
+}
+
+.image_form input[type="file"] {
+	outline: none;
+}
